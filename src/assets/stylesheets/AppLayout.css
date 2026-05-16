@@ -1,0 +1,30 @@
+/* Apply a reset to ensure full height */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app-layout {
+  display: grid;
+  grid-template-rows: 60px 1fr; /* Header is 60px, rest of the space goes to content */
+  grid-template-columns: 250px 1fr; /* Sidebar is 250px, main content takes the rest */
+  grid-template-areas: 
+    "header header"
+    "sidebar main";
+  height: 100vh;
+}
+
+.top-navigation {
+  grid-area: header;
+}
+
+.app-workspace {
+  grid-area: sidebar;
+}
+
+.main-content {
+  grid-area: main;
+  padding: 20px;
+  overflow-y: auto; /* Allows only the main content to scroll if it's long */
+}

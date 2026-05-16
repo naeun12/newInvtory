@@ -1,0 +1,15 @@
+:root {
+    --color-primary: #0a6ed1;
+    --color-secondary: #ffd100;
+    --color-accent: #e21b23;
+    --color-text: #1a1a1a;
+    --color-background: #f8f9fa;
+    --color-white: #ffffff;
+
+    /* Premium UI Additions */
+    --color-primary-hover: #0856a4;
+    --shadow-premium: 0 20px 40px -15px rgba(10, 110, 209, 0.15),
+        0 15px 25px -10px rgba(0, 0, 0, 0.05);
+    --radius-premium: 16px;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

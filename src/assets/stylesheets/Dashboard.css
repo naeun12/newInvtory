@@ -1,0 +1,194 @@
+/* Dashboard Main Container Context Layout */
+
+
+/* Header Component */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.dashboard-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.5px;
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Premium Button Class */
+.btn-premium {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: var(--transition-smooth);
+}
+
+.btn-premium:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+}
+
+/* Responsive Metric Card Grid System */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+/* Metric Cards style layers */
+.metric-card {
+    background: var(--color-white);
+    border-radius: var(--radius-premium);
+    padding: 24px;
+    box-shadow: var(--shadow-premium);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Icon Variations within cards */
+.metric-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.primary-bg {
+    background-color: rgba(10, 110, 209, 0.1);
+    color: var(--color-primary);
+}
+
+.accent-bg {
+    background-color: rgba(226, 27, 35, 0.1);
+    color: var(--color-accent);
+}
+
+.secondary-bg {
+    background-color: rgba(255, 209, 0, 0.15);
+    color: #b39200;
+}
+
+/* Darkened yellow text for readability */
+
+.metric-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-label {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.metric-value {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+}
+
+/* Micro badge indicators for analytics values */
+.metric-trend {
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.trend-up {
+    color: #10b981;
+}
+
+.trend-down {
+    color: var(--color-accent);
+}
+
+.trend-neutral {
+    color: var(--color-text-muted);
+}
+
+/* Large Container Visualization Card Wrapper */
+.visualization-container {
+    width: 100%;
+}
+
+.chart-card {
+    background: var(--color-white);
+    border-radius: var(--radius-premium);
+    padding: 32px;
+    box-shadow: var(--shadow-premium);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.chart-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+}
+
+.chart-legends {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.legend-dot.primary {
+    background-color: var(--color-primary);
+}
+
+.legend-dot.secondary {
+    background-color: var(--color-secondary);
+}
+
+.chart-body {
+    position: relative;
+    width: 100%;
+    height: 320px;
+}

@@ -1,0 +1,175 @@
+.auth-container {
+    background: linear-gradient(135deg, #f3f7fa 0%, #eef2f7 100%) !important;
+    position: relative;
+    overflow: hidden;
+}
+.auth-container::before,
+.auth-container::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: 0;
+}
+
+.auth-container::before {
+    top: -50px;
+    left: -50px;
+    background: var(--color-primary);
+}
+
+.auth-container::after {
+    bottom: -50px;
+    right: -50px;
+    background: var(--color-secondary);
+}
+
+
+/* 2. Enhanced Floating Card */
+.auth-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    border-radius: var(--radius-premium) !important;
+    background: rgba(25/6, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: var(--shadow-premium) !important;
+    transition: var(--transition-smooth);
+}
+/* --- Logo & Header Styling --- */
+
+.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-logo {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05));
+
+    /* Smooth load-in animation */
+    animation: fadeInDown 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Keyframe for a smooth entrance effect */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* 3. Form Input Modernization */
+.form-control-lg {
+    font-size: 0.95rem !important;
+    padding: 12px 16px !important;
+    border-radius: 10px !important;
+    border: 1.5px solid #e2e8f0 !important;
+    background-color: rgba(248, 249, 250, 0.7) !important;
+    color: var(--color-text) !important;
+    transition: var(--transition-smooth) !important;
+}
+
+.form-control-lg:focus {
+    background-color: var(--color-white) !important;
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 4px rgba(10, 110, 209, 0.15) !important;
+}
+
+/* 4. Primary CTA Login Button */
+.login-button {
+    background-color: var(--color-primary) !important;
+    color: var(--color-white) !important;
+    width: 100%;
+    padding: 12px 24px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.03em;
+    border: none !important;
+    border-radius: 10px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth) !important;
+    box-shadow: 0 4px 12px rgba(10, 110, 209, 0.25) !important;
+}
+
+.login-button:hover {
+    background-color: var(--color-primary-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(10, 110, 209, 0.4) !important;
+}
+
+.login-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 8px rgba(10, 110, 209, 0.2) !important;
+}
+
+/* 5. Clean Link Styling */
+.link-hover {
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.link-hover::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: var(--transition-smooth);
+}
+
+.link-hover:hover::after {
+    width: 100%;
+}
+/* --- Show Password Toggle Styling --- */
+
+.show-password-wrapper {
+    cursor: pointer;
+    user-select: none;
+}
+
+.show-password-text {
+    font-size: 0.85rem;
+    transition: var(--transition-smooth);
+    position: relative;
+    opacity: 0.85;
+}
+
+.show-password-wrapper:hover .show-password-text {
+    opacity: 1;
+    color: var(--color-primary-hover) !important;
+}
+
+/* Subtle under-line effect on hover */
+.show-password-text::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1.5px;
+    bottom: -1px;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: var(--transition-smooth);
+}
+
+.show-password-wrapper:hover .show-password-text::after {
+    width: 100%;
+}

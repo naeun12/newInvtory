@@ -1,0 +1,59 @@
+.toast-custom {
+    z-index: 1055;
+    background: rgba(255, 255, 255, 0.85);
+    /* Clean white glassmorphism */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-left: 4px solid #198754 !important;
+    /* Green success accent bar */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    min-width: 320px;
+    max-width: 400px;
+
+    /* Smooth slide-in animation */
+    animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Text & Icon Styling */
+.toast-icon-wrapper {
+    color: #198754;
+    background-color: rgba(25, 135, 84, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.toast-title {
+    color: #1a1a1a;
+    font-size: 0.95rem;
+    letter-spacing: -0.2px;
+}
+
+.toast-body-text {
+    color: #666666;
+    font-size: 0.85rem;
+}
+
+/* Minimalist Close Button */
+.btn-close-custom {
+    background-size: 0.8rem;
+    opacity: 0.4;
+    transition: opacity 0.2s ease;
+}
+
+.btn-close-custom:hover {
+    opacity: 0.8;
+}
+
+/* Entry Animation */
+@keyframes slideInUp {
+    from {
+        transform: translateY(1rem) scale(0.98);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}

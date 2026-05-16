@@ -1,0 +1,110 @@
+/* 1. Glassmorphic Sticky Header Base */
+.premium-navbar {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+    padding: 12px 0;
+    transition: var(--transition-smooth);
+}
+
+/* 2. Responsive Logo Sizing */
+.nav-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+    transition: var(--transition-smooth);
+}
+
+.nav-logo:hover {
+    transform: scale(1.02);
+}
+
+/* 3. Smart Flex Alignment for Simple Layout */
+.navbar-collapse {
+    /* Pushes the profile container completely to the right side when expanded */
+    justify-content: flex-end;
+}
+
+/* 4. Premium Profile Action Button */
+.nav-cta-button {
+    background-color: var(--color-white) !important;
+    color: var(--color-text) !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    padding: 8px 20px !important;
+    border-radius: 50px !important;
+    /* Pill shape looks excellent for profiles */
+    border: 1.5px solid #e2e8f0 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+    transition: var(--transition-smooth) !important;
+}
+
+.nav-cta-button:hover {
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(10, 110, 209, 0.1) !important;
+}
+
+.nav-cta-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 5. Mobile Toggle & Dropdown Clean Up */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: var(--color-white);
+        margin-top: 12px;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-collapse .d-flex {
+        margin-top: 0 !important;
+        /* Fixes spacing jump on mobile viewports */
+        width: 100%;
+    }
+
+    .nav-cta-button {
+        width: 100%;
+        /* Spans full width on mobile screens for easy tapping */
+        justify-content: center;
+    }
+}
+
+/* CSS-only Hamburger Menu Icon */
+.navbar-toggler-icon-custom {
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--color-text);
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.navbar-toggler-icon-custom::before,
+.navbar-toggler-icon-custom::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: var(--color-text);
+    left: 0;
+}
+
+.navbar-toggler-icon-custom::before {
+    top: -6px;
+}
+
+.navbar-toggler-icon-custom::after {
+    bottom: -6px;
+}

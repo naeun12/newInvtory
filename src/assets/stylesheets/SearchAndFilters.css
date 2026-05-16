@@ -1,0 +1,56 @@
+/* Custom utility to limit search width on medium screens and up, matching Tailwind's max-w-xl */
+@media (min-width: 768px) {
+    .max-w-md-xl {
+        max-w: 36rem;
+        /* equivalent to max-w-xl (576px) */
+    }
+}
+
+/* Tracking tight utility */
+.tracking-tight {
+    letter-spacing: -0.025em;
+}
+
+/* Helper to prevent pointer events on the icon */
+.pointer-events-none {
+    pointer-events: none;
+}
+
+/* Custom Search Input Styling */
+.custom-search-input {
+    padding-left: 2.75rem;
+    padding-right: 1.5rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    background-color: #f8f9fa;
+    /* bg-gray-100 */
+    border: 1px solid transparent;
+    border-radius: 0.75rem;
+    /* rounded-xl */
+    font-size: 0.875rem;
+    /* text-sm */
+    color: #212529;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+.custom-search-input::placeholder {
+    color: #6c757d;
+    /* placeholder-gray-500 */
+}
+
+/* Focus States */
+.custom-search-input:focus {
+    background-color: #ffffff;
+    border-color: #6366f1;
+    /* Indigo-600 */
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    /* Ring effect using Indigo-100 tone */
+    color: #212529;
+}
+
+/* Adjusting the icon wrapper z-index so it sits above the background input */
+.search-icon-wrapper {
+    z-index: 5;
+    color: #6c757d !important;
+}

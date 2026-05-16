@@ -1,0 +1,140 @@
+/* Premium Modal Layout overrides */
+.premium-modal-wrapper {
+    background-color: rgba(26, 26, 26, 0.4);
+    backdrop-filter: blur(8px);
+}
+
+.premium-modal-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-premium);
+    box-shadow: var(--shadow-premium);
+    color: var(--color-text);
+    overflow: hidden;
+}
+
+.premium-title {
+    color: var(--color-text);
+    letter-spacing: -0.5px;
+}
+
+/* Form Styling Additions */
+.premium-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #6c757d;
+    margin-bottom: 0.4rem;
+}
+
+.premium-input {
+    border: 1.5px solid #e9ecef;
+    border-radius: 10px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    transition: var(--transition-smooth);
+}
+
+.premium-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(10, 110, 209, 0.12);
+    outline: none;
+}
+
+.premium-input::placeholder {
+    color: #adb5bd;
+}
+
+/* Modern File Dropzone */
+.upload-container {
+    border: 2px dashed #dee2e6;
+    border-radius: var(--radius-premium);
+    background-color: var(--color-background);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.upload-container:hover {
+    border-color: var(--color-primary);
+    background-color: rgba(10, 110, 209, 0.02);
+}
+
+.upload-icon-box {
+    width: 56px;
+    height: 56px;
+    background-color: rgba(10, 110, 209, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: var(--transition-smooth);
+}
+
+.upload-container:hover .upload-icon-box {
+    transform: translateY(-3px);
+    background-color: rgba(10, 110, 209, 0.12);
+}
+
+.img-preview {
+    max-height: 140px;
+    object-fit: contain;
+    border: 1px solid #dee2e6;
+}
+
+/* Interactive Close Button */
+.premium-close-btn {
+    background-color: var(--color-background);
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: var(--transition-smooth);
+}
+
+.premium-close-btn:hover {
+    background-color: #e9ecef;
+    transform: rotate(90deg);
+}
+
+/* Action Buttons styled with system colors */
+.premium-btn-primary {
+    background-color: var(--color-primary);
+    border: none;
+    color: var(--color-white);
+    padding: 0.65rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+}
+
+.premium-btn-primary:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(10, 110, 209, 0.2);
+}
+
+.premium-btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.premium-btn-secondary {
+    background-color: transparent;
+    border: 1.5px solid #dee2e6;
+    color: #5a626a;
+    padding: 0.65rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+}
+
+.premium-btn-secondary:hover {
+    background-color: var(--color-background);
+    border-color: #ced4da;
+    color: var(--color-text);
+}
+
+/* Extra utility class */
+.tracking-wider {
+    letter-spacing: 0.05em;
+}
