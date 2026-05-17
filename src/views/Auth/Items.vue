@@ -44,7 +44,7 @@ import SearchAndFilters from "../Partials/SearchAndFilters.vue";
 import ScreenLoading from "../Components/Loaders/ScreenLoading.vue";
 import Table from "../Partials/Table.vue";
 import TableColumnsData from "@/views/Data/TableColumnsData.js";
-import AddModal from "../Partials/ActionsHandle/Items/AddItems.vue";
+import AddModal from "../Partials/ActionsHandle/Items/AddItem.vue";
 export default {
   components: {
     Navigation,

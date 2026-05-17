@@ -77,12 +77,14 @@
             <div class="d-flex justify-content-end gap-1">
               <button
                 class="btn btn-sm btn-icon-flat text-secondary hover-primary"
-                title="Edit">
+                title="Edit"
+                @click="OpenEditModal(row.itemID)">
                 <i class="bi bi-pencil"></i> Edit
               </button>
               <button
                 class="btn btn-sm btn-icon-flat text-danger hover-danger-bg"
-                title="Delete">
+                title="Delete"
+                @click="GetItemId(row.itemID)">
                 <i class="bi bi-trash"></i> Delete
               </button>
             </div>
@@ -91,17 +93,66 @@
       </tbody>
     </table>
   </div>
+  <EditItem
+    :currentItem="currentItem"
+    :isEditModal="isEditModal"
+    :ItemID="ItemID"
+    @close="isEditModal = false" />
 </template>
 <script>
+import axios from "axios";
+import EditItem from "./ActionsHandle/Items/EditItem.vue";
 export default {
   props: {
     ColumnsData: {
-      type: Array,
+      type: Object,
       default: () => [],
     },
     FetchDatas: {
-      type: Array,
+      type: Object,
       default: () => [],
+    },
+  },
+  components: {
+    EditItem,
+  },
+  data() {
+    return {
+      isEditModal: false,
+      currentItem: {
+        itemCode: "",
+        type: "",
+        description: "",
+        unitOfMeasure: "",
+        storage: "",
+        serialNumber: "",
+        availableStocks: 0,
+        remarks: "",
+      },
+
+      ItemID: 0,
+    };
+  },
+  methods: {
+    async GetItemId(itemID) {
+      const response = await axios.get(
+        `https://localhost:5001/api/Item/GetItem`,
+        {
+          params: { itemID: itemID },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        },
+      );
+      if (response.data.success) {
+        const currentItem = response.data.data;
+        this.currentItem = currentItem;
+        this.ItemID = itemID;
+      }
+    },
+    OpenEditModal(itemID) {
+      this.GetItemId(itemID);
+      this.isEditModal = true;
     },
   },
 };

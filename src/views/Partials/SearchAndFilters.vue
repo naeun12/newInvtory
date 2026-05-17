@@ -3,7 +3,7 @@
 <template>
   <div class="container-xl py-3">
     <div
-      class="d-flex flex-column flex-md-row align-items-md-center justify-content-md-between gap-3">
+      class="d-flex flex-column flex-md-row justify-content-md-between gap-3">
       <!-- Search Bar Component -->
       <div class="w-50 max-w-md-xl position-relative">
         <div
