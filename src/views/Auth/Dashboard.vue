@@ -29,10 +29,7 @@
           </div>
           <div class="metric-details">
             <span class="metric-label">Total Inventory Items</span>
-            <h3 class="metric-value">1,248</h3>
-            <span class="metric-trend trend-up">
-              <i class="bi bi-arrow-up-short"></i> +12% this week
-            </span>
+            <h3 class="metric-value">{{ totalInventoryItems }}</h3>
           </div>
         </div>
         <div class="metric-card">
@@ -41,10 +38,7 @@
           </div>
           <div class="metric-details">
             <span class="metric-label">Active Issuances</span>
-            <h3 class="metric-value">84</h3>
-            <span class="metric-trend trend-down">
-              <i class="bi bi-arrow-down-short"></i> -3% vs yesterday
-            </span>
+            <h3 class="metric-value">{{ activeIssuances }}</h3>
           </div>
         </div>
         <div class="metric-card">
@@ -52,11 +46,8 @@
             <i class="bi bi-printer"></i>
           </div>
           <div class="metric-details">
-            <span class="metric-label">Online Devices</span>
-            <h3 class="metric-value">42 / 45</h3>
-            <span class="metric-trend trend-neutral">
-              <i class="bi bi-dash"></i> Stable operations
-            </span>
+            <span class="metric-label">Total Issuances</span>
+            <h3 class="metric-value">{{ totalIssuances }}</h3>
           </div>
         </div>
       </section>
@@ -87,12 +78,75 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 import Navigation from "../Components/Navigation.vue";
 import Sidebar from "../Components/Sidebar.vue";
 export default {
   components: {
     Navigation,
     Sidebar,
+  },
+  data() {
+    return {
+      totalInventoryItems: 0,
+      activeIssuances: 0,
+      totalIssuances: 0,
+    };
+  },
+  methods: {
+    async getTotalInventoryItems() {
+      try {
+        const response = await axios.get(
+          "https://localhost:5001/api/Dashboard/TotalInventoryItems",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          },
+        );
+
+        this.totalInventoryItems = response.data.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getActiveIssuances() {
+      try {
+        const response = await axios.get(
+          "https://localhost:5001/api/Dashboard/ActiveIssuance",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          },
+        );
+
+        this.activeIssuances = response.data.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getTotalIssuances() {
+      try {
+        const response = await axios.get(
+          "https://localhost:5001/api/Dashboard/TotalIssuance",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          },
+        );
+
+        this.totalIssuances = response.data.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+  mounted() {
+    this.getTotalInventoryItems();
+    this.getActiveIssuances();
+    this.getTotalIssuances();
   },
 };
 </script>

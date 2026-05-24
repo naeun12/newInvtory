@@ -41,5 +41,44 @@ export default {
           "py-3 text-uppercase x-small fw-bold text-secondary text-end pe-4",
       },
     ],
+    PrintersTableColumsData: [
+      {
+        label: "PRINTER ID",
+        class: "ps-4 py-3 text-uppercase x-small fw-bold text-secondary",
+      },
+      {
+        label: "OFFICE NAME",
+        class: "ps-4 py-3 text-uppercase x-small fw-bold text-secondary",
+      },
+      {
+        label: "PRINTER NAME",
+        class: "py-3 text-uppercase x-small fw-bold text-secondary",
+      },
+      {
+        label: "QUANTITY.",
+        class: "py-3 text-uppercase x-small fw-bold text-secondary",
+      },
+      {
+        label: "OWNERSHIP STATUS",
+        class: "py-3 text-uppercase x-small fw-bold text-secondary text-center",
+      },
+      {
+        label: "INK USE",
+        class: "py-3 text-uppercase x-small fw-bold text-secondary",
+      },
+      {
+        label: "SUPPLIER",
+        class: "py-3 text-uppercase x-small fw-bold text-secondary text-center",
+      },
+      {
+        label: "REMARKS",
+        class: "py-3 text-uppercase x-small fw-bold text-secondary text-end",
+      },
+      {
+        label: "Actions",
+        class:
+          "py-3 text-uppercase x-small fw-bold text-secondary text-end pe-4",
+      },
+    ],
   },
 };

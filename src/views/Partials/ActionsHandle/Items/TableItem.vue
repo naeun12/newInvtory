@@ -101,7 +101,7 @@
 </template>
 <script>
 import axios from "axios";
-import EditItem from "./ActionsHandle/Items/EditItem.vue";
+import EditItem from "../../ActionsHandle/Items/EditItem.vue";
 export default {
   props: {
     ColumnsData: {
@@ -157,4 +157,4 @@ export default {
   },
 };
 </script>
-<style src="../../assets/stylesheets/Table.css"></style>
+<style src="../../../../assets/stylesheets/Table.css"></style>

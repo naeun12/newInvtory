@@ -21,10 +21,14 @@
             <span>Inventory</span>
           </a>
         </li>
+      </ul>
+      <ul>
+        <div class="nav-section-title">PRINTERS</div>
+
         <li>
-          <a href="#" class="nav-item">
+          <a href="/Printers" class="nav-item">
             <i class="bi bi-printer"></i>
-            <span>Devices</span>
+            <span>Printers</span>
           </a>
         </li>
       </ul>
