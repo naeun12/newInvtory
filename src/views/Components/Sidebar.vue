@@ -31,6 +31,10 @@
             <span>Printers</span>
           </a>
         </li>
+        <a href="/DashboardPrinter" class="nav-item">
+          <i class="bi bi-pc-display"></i>
+          <span>Printers Dashboard</span>
+        </a>
       </ul>
 
       <!-- Section Title & Dropdown -->

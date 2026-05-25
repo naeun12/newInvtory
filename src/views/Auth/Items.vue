@@ -23,6 +23,7 @@
       </div>
       <div class="dashboard-header">
         <SearchAndFilters />
+
         <div class="header-actions">
           <button class="btn-premium" @click="isAddModal = true">
             <i class="bi bi-plus-circle me-2"></i> Add Items

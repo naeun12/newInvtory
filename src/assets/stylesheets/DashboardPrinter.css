@@ -1,0 +1,247 @@
+/* I-replace o usba kani nga mga lines sa imong CSS */
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    /* Sigurado nga naay gitas-on ang bar chart */
+    display: block;
+}
+
+.circular-chart {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    /* Gi-fixed ang height para sa Pie ug Doughnut Chart */
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Siguroon nato nga mosunod ang canvas sa iyang sudlanan */
+.canvas-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.dashboard-viewport {
+    background-color: #f8fafc;
+    min-height: 100vh;
+    font-family:
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        Arial,
+        sans-serif;
+    color: #1a1a1a;
+}
+
+.dashboard-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+/* Header Module styling */
+.dashboard-header {
+    margin-bottom: 32px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin: 0 0 4px 0;
+    color: #0f172a;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Bootstrap Icons Scalable Mapping */
+.bi-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Base Glassmorphism Framework Components */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.02),
+        0 2px 4px -1px rgba(0, 0, 0, 0.01);
+}
+
+/* Metrics Dashboard Cards Grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.card {
+    border-radius: var(--radius-premium);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: var(--transition-smooth);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.04),
+        0 10px 10px -5px rgba(0, 0, 0, 0.02);
+}
+
+.bg-primary-gradient {
+    background: linear-gradient(135deg, #0a6ed1, #0856a4);
+    color: #ffffff;
+    border: none;
+}
+
+.bg-primary-gradient:hover {
+    box-shadow: 0 20px 30px -10px rgba(10, 110, 209, 0.3);
+}
+
+.icon-wrapper {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    color: #0a6ed1;
+}
+
+.bg-primary-gradient .icon-wrapper {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+}
+
+.secondary-tint {
+    color: #d4af37;
+    background: #fef9c3;
+}
+
+.success-tint {
+    color: #10b981;
+    background: #d1fae5;
+}
+
+.accent-tint {
+    color: #e21b23;
+    background: #fee2e2;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bg-primary-gradient .card-label {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.card-value {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 4px 0 0 0;
+    line-height: 1;
+    color: #0f172a;
+}
+
+.bg-primary-gradient .card-value {
+    color: #ffffff;
+}
+
+/* Three-Column Bento Layout Grid Blueprint */
+.charts-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.grid-span-main {
+    grid-column: span 3;
+}
+
+@media (min-width: 1200px) {
+    .charts-bento-grid {
+        grid-template-columns: 1.4fr 0.8fr 0.8fr;
+    }
+
+    .grid-span-main {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 992px) {
+    .charts-bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-span-main {
+        grid-column: span 1;
+    }
+}
+
+.chart-card {
+    border-radius: var(--radius-premium);
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.chart-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.badge {
+    background: #f1f5f9;
+    color: #475569;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.canvas-container {
+    position: relative;
+    height: 320px;
+    width: 100%;
+}
+
+.circular-chart {
+    height: 250px;
+    margin: auto 0;
+}

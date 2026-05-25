@@ -5,6 +5,7 @@ import Login from "../views/Auth/Login.vue";
 import Dashboard from "@/views/Auth/Dashboard.vue";
 import Items from "@/views/Auth/Items.vue";
 import Printers from "@/views/Auth/Printer.vue";
+import DashboardPrinter from "@/views/Auth/DashboardPrinter.vue";
 const routes = [
   {
     path: "/",
@@ -25,6 +26,11 @@ const routes = [
     path: "/Printers",
     name: "Printers",
     component: Printers,
+  },
+  {
+    path: "/DashboardPrinter",
+    name: "DashboardPrinter",
+    component: DashboardPrinter,
   },
 ];
 const router = createRouter({

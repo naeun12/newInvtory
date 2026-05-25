@@ -1,42 +1,77 @@
 <!-- @format -->
-
 <template>
-  <div class="container-xl py-3">
-    <div
-      class="d-flex flex-column flex-md-row justify-content-md-between gap-3">
-      <!-- Search Bar Component -->
-      <div class="w-50 max-w-md-xl position-relative">
-        <div
-          class="position-absolute top-50 start-0 translate-middle-y ps-3 pointer-events-none text-muted search-icon-wrapper">
-          <!-- Bootstrap Icon fallback, or Lucide JS target -->
-          <i data-lucide="search" class="bi bi-search fs-5"></i>
+  <div class="search-filters-container">
+    <div class="search-filters-layout">
+      <!-- Search Component (Dynamic Width) -->
+      <div class="search-box-wrapper">
+        <div class="search-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
         </div>
         <input
           type="text"
           placeholder="Search for items, brands, or keywords..."
-          class="form-control custom-search-input ps-5" />
-        <!-- Added ps-5 to prevent text from overlapping the icon -->
+          class="search-input" />
       </div>
 
-      <!-- Filters Component -->
-      <div class="d-flex flex-row gap-2 w-100 w-md-auto">
+      <!-- Dropdowns Component (Pantay ug Symmetrical) -->
+      <div class="dropdowns-group">
         <!-- Date Sort -->
-        <select
-          class="form-select custom-filter-select w-50"
-          aria-label="Sort by Date">
-          <option selected disabled>Sort by Date</option>
-          <option value="date-desc">Newest First</option>
-          <option value="date-asc">Oldest First</option>
-        </select>
+        <div class="select-wrapper">
+          <select class="custom-select" aria-label="Sort by Date">
+            <option selected disabled>Sort by Date</option>
+            <option value="date-desc">Newest First</option>
+            <option value="date-asc">Oldest First</option>
+          </select>
+          <div class="select-arrow">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
 
         <!-- Name Sort -->
-        <select
-          class="form-select custom-filter-select w-50"
-          aria-label="Sort by Name">
-          <option selected disabled>Sort by Name</option>
-          <option value="name-asc">Name (A-Z)</option>
-          <option value="name-desc">Name (Z-A)</option>
-        </select>
+        <div class="select-wrapper">
+          <select class="custom-select" aria-label="Sort by Name">
+            <option selected disabled>Sort by Name</option>
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+          </select>
+          <div class="select-arrow">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   </div>

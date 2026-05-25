@@ -67,7 +67,7 @@
               <button
                 class="btn btn-sm btn-icon-flat text-danger hover-danger-bg"
                 title="Delete"
-                @click="GetPrinterId(row.printerID)">
+                @click="OpenDeleteModal(row.printerID)">
                 <i class="bi bi-trash"></i> Delete
               </button>
             </div>
@@ -81,10 +81,16 @@
     :isEditModal="isEditModal"
     :PrinterID="PrinterID"
     @close="isEditModal = false" />
+  <DeleteData
+    :DataID="PrinterID"
+    :isDeleteData="isDeleteData"
+    :url="url"
+    @close="isDeleteData = false" />
 </template>
 <script>
 import axios from "axios";
 import EditPrinter from "../Printers/EditPrinter.vue";
+import DeleteData from "./../../DeleteData.vue";
 export default {
   props: {
     ColumnsData: {
@@ -98,10 +104,12 @@ export default {
   },
   components: {
     EditPrinter,
+    DeleteData,
   },
   data() {
     return {
       isEditModal: false,
+      isDeleteData: false,
       currentPrinter: {
         fkLocationID: 0,
         officeName: "",
@@ -114,6 +122,7 @@ export default {
       },
 
       PrinterID: 0,
+      url: "https://localhost:5001/api/Printer/deletePrinter",
     };
   },
   methods: {
@@ -136,6 +145,10 @@ export default {
     OpenEditModal(printerID) {
       this.GetPrinterId(printerID);
       this.isEditModal = true;
+    },
+    OpenDeleteModal(printerID) {
+      this.GetPrinterId(printerID);
+      this.isDeleteData = true;
     },
   },
 };

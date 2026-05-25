@@ -84,7 +84,7 @@
               <button
                 class="btn btn-sm btn-icon-flat text-danger hover-danger-bg"
                 title="Delete"
-                @click="GetItemId(row.itemID)">
+                @click="OpenDeleteModal(row.itemID)">
                 <i class="bi bi-trash"></i> Delete
               </button>
             </div>
@@ -98,10 +98,17 @@
     :isEditModal="isEditModal"
     :ItemID="ItemID"
     @close="isEditModal = false" />
+  <DeleteData
+    :DataID="ItemID"
+    :isDeleteData="isDeleteData"
+    :url="url"
+    @close="isDeleteData = false" />
 </template>
 <script>
 import axios from "axios";
 import EditItem from "../../ActionsHandle/Items/EditItem.vue";
+import DeleteData from "./../../DeleteData.vue";
+
 export default {
   props: {
     ColumnsData: {
@@ -115,10 +122,12 @@ export default {
   },
   components: {
     EditItem,
+    DeleteData,
   },
   data() {
     return {
       isEditModal: false,
+      isDeleteData: false,
       currentItem: {
         itemCode: "",
         type: "",
@@ -131,6 +140,7 @@ export default {
       },
 
       ItemID: 0,
+      url: "https://localhost:5001/api/Item/deleteItem",
     };
   },
   methods: {
@@ -153,6 +163,10 @@ export default {
     OpenEditModal(itemID) {
       this.GetItemId(itemID);
       this.isEditModal = true;
+    },
+    OpenDeleteModal(itemID) {
+      this.GetItemId(itemID);
+      this.isDeleteData = true;
     },
   },
 };

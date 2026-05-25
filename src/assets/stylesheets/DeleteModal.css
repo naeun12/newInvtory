@@ -1,0 +1,196 @@
+
+
+/* Vue Transitions mapped to root specs */
+.premium-fade-enter-active,
+.premium-fade-leave-active {
+    transition: opacity 0.25s ease;
+}
+
+.premium-fade-enter-from,
+.premium-fade-leave-to {
+    opacity: 0;
+}
+
+.premium-fade-enter-active .premium-modal-dialog {
+    transition: var(--transition-smooth);
+}
+
+.premium-fade-leave-active .premium-modal-dialog {
+    transition: transform 0.2s ease;
+}
+
+.premium-fade-enter-from .premium-modal-dialog,
+.premium-fade-leave-to .premium-modal-dialog {
+    transform: scale(0.96) translateY(-8px);
+}
+
+/* Glassmorphism Mask overlaying the web app background */
+.premium-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(26, 26, 26, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    padding: 1.5rem;
+}
+
+.premium-modal-dialog {
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+}
+
+/* Premium Modal Card strictly leveraging --color-primary wrapper */
+.premium-modal-content {
+    position: relative;
+    background: linear-gradient(145deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-premium);
+    box-shadow: var(--shadow-premium);
+    overflow: hidden;
+    color: var(--color-white);
+    /* High contrast content shift over primary */
+}
+
+/* Accent Glow leveraging the secondary golden token */
+.premium-glow {
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 209, 0, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+}
+
+/* Internal Structural Layouts */
+.premium-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Warning box shifts to high contrast warning text against dark primary layout */
+.warning-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 209, 0, 0.15);
+    color: var(--color-secondary);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 209, 0, 0.25);
+}
+
+.premium-modal-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--color-white);
+}
+
+.premium-btn-close {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.premium-btn-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+}
+
+.premium-modal-body {
+    padding: 1.5rem 1.75rem;
+}
+
+.main-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: 0.5rem;
+}
+
+.sub-text {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Footer Control Elements */
+.premium-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1.25rem 1.75rem 1.5rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Secondary Button uses subtle white framework */
+.btn-premium-secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--color-white);
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-premium-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Primary Action applies the vivid --color-accent crimson token safely */
+.btn-premium-danger {
+    background: var(--color-accent);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--color-white);
+    padding: 0.625rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(226, 27, 35, 0.2);
+    transition: var(--transition-smooth);
+}
+
+.btn-premium-danger:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(226, 27, 35, 0.45);
+    filter: brightness(1.15);
+}
+
+.btn-premium-danger:active {
+    transform: translateY(0);
+}
