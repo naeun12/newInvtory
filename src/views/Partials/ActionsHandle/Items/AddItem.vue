@@ -41,8 +41,6 @@
                   class="d-none"
                   accept="image/*"
                   @change="handleAddFileSelect" />
-
-                <!-- Preview State -->
                 <div v-if="previewAddUrl" class="text-center preview-active">
                   <img
                     :src="previewAddUrl"
@@ -53,7 +51,6 @@
                     image
                   </p>
                 </div>
-
                 <!-- Default Empty State -->
                 <div v-else class="text-center upload-placeholder">
                   <div class="upload-icon-box mb-2">

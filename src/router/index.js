@@ -6,6 +6,8 @@ import Dashboard from "@/views/Auth/Dashboard.vue";
 import Items from "@/views/Auth/Items.vue";
 import Printers from "@/views/Auth/Printer.vue";
 import DashboardPrinter from "@/views/Auth/DashboardPrinter.vue";
+import Logistic from "@/views/Auth/Logistic.vue";
+import Issuances from "@/views/Auth/Issuances.vue";
 const routes = [
   {
     path: "/",
@@ -31,6 +33,16 @@ const routes = [
     path: "/DashboardPrinter",
     name: "DashboardPrinter",
     component: DashboardPrinter,
+  },
+  {
+    path: "/Logistic",
+    name: "Logistic",
+    component: Logistic,
+  },
+  {
+    path: "/Issuances",
+    name: "Issuances",
+    component: Issuances,
   },
 ];
 const router = createRouter({

@@ -3,6 +3,7 @@
 <template>
   <div class="app-layout">
     <ScreenLoading :Loading="Loading" :LoadingMessage="LoadingMessage" />
+
     <header class="top-navigation">
       <Navigation />
     </header>
@@ -20,6 +21,7 @@
             procurement metrics.
           </p>
         </div>
+
         <button class="btn-premium">
           <i class="bi bi-download me-2"></i> Export Report
         </button>
@@ -27,11 +29,11 @@
 
       <div class="dashboard-viewport">
         <div>
-          <!-- Cards -->
+          <!-- CARDS -->
           <section class="cards-grid" v-if="dashboard">
             <div class="card bg-primary-gradient">
               <div class="icon-wrapper">
-                <svg class="bi-icon"><use xlink:href="#icon-printer" /></svg>
+                <i class="bi bi-printer fs-3"></i>
               </div>
               <div class="card-info">
                 <span class="card-label">Total Printers</span>
@@ -41,7 +43,7 @@
 
             <div class="card glass-panel">
               <div class="icon-wrapper secondary-tint">
-                <svg class="bi-icon"><use xlink:href="#icon-building" /></svg>
+                <i class="bi bi-building fs-3"></i>
               </div>
               <div class="card-info">
                 <span class="card-label">Offices</span>
@@ -51,7 +53,7 @@
 
             <div class="card glass-panel">
               <div class="icon-wrapper success-tint">
-                <svg class="bi-icon"><use xlink:href="#icon-gift" /></svg>
+                <i class="bi bi-gift fs-3"></i>
               </div>
               <div class="card-info">
                 <span class="card-label">Free Use</span>
@@ -61,7 +63,7 @@
 
             <div class="card glass-panel">
               <div class="icon-wrapper accent-tint">
-                <svg class="bi-icon"><use xlink:href="#icon-briefcase" /></svg>
+                <i class="bi bi-briefcase fs-3"></i>
               </div>
               <div class="card-info">
                 <span class="card-label">Self Procured</span>
@@ -70,8 +72,9 @@
             </div>
           </section>
 
-          <!-- Charts -->
+          <!-- CHARTS -->
           <section class="charts-bento-grid" v-if="dashboard">
+            <!-- OFFICE -->
             <div class="chart-card glass-panel grid-span-main">
               <div class="chart-header">
                 <h3>Printers per Office</h3>
@@ -82,6 +85,7 @@
               </div>
             </div>
 
+            <!-- OWNERSHIP -->
             <div class="chart-card glass-panel">
               <div class="chart-header">
                 <h3>Ownership Split</h3>
@@ -92,6 +96,7 @@
               </div>
             </div>
 
+            <!-- LOCATION -->
             <div class="chart-card glass-panel">
               <div class="chart-header">
                 <h3>Location Shares</h3>
@@ -107,6 +112,7 @@
     </main>
   </div>
 </template>
+
 <script>
 import Chart from "chart.js/auto";
 import axios from "axios";
@@ -121,41 +127,29 @@ export default {
     return {
       dashboard: null,
       charts: {},
+
       Loading: false,
       LoadingMessage: "Loading dashboard...",
+
+      totalPrinters: 0,
+      totalOffices: 0,
+      freeUse: 0,
+      selfProcured: 0,
+
+      // ✅ LOCATION DATA
+      locationChart: [],
     };
-  },
-
-  computed: {
-    totalPrinters() {
-      return (
-        this.dashboard?.officeChart?.reduce((a, b) => a + (b.value || 0), 0) ||
-        0
-      );
-    },
-
-    totalOffices() {
-      return this.dashboard?.officeChart?.length || 0;
-    },
-
-    freeUse() {
-      return this.dashboard?.ownershipChart?.values?.[0] || 0;
-    },
-
-    selfProcured() {
-      return this.dashboard?.ownershipChart?.values?.[1] || 0;
-    },
   },
 
   async mounted() {
     await this.fetchDashboard();
-
-    this.$nextTick(() => {
-      this.renderCharts();
-    });
+    this.renderCharts();
   },
 
   methods: {
+    // =========================
+    // FETCH DASHBOARD
+    // =========================
     async fetchDashboard() {
       try {
         this.Loading = true;
@@ -170,6 +164,13 @@ export default {
         );
 
         this.dashboard = res.data || null;
+
+        this.totalPrinters = res.data.totalPrinters ?? 0;
+        this.totalOffices = res.data.totalOffices ?? 0;
+        this.freeUse = res.data.freeUse ?? 0;
+        this.selfProcured = res.data.selfProcured ?? 0;
+
+        this.locationChart = res.data.locationChart ?? [];
       } catch (err) {
         console.error("Dashboard error:", err);
         this.dashboard = null;
@@ -178,21 +179,20 @@ export default {
       }
     },
 
+    // =========================
+    // RENDER CHARTS
+    // =========================
     renderCharts() {
       if (!this.dashboard) return;
 
-      // destroy old charts safely
-      Object.values(this.charts || {}).forEach((c) => {
-        if (c) c.destroy();
-      });
+      // destroy old charts
+      Object.values(this.charts).forEach((c) => c && c.destroy());
 
       const officeData = this.dashboard.officeChart || [];
       const ownershipData = this.dashboard.ownershipChart || [];
-      const locationData = this.dashboard.locationChart || [];
+      const locationData = this.locationChart || [];
 
-      // =========================
-      // 📊 OFFICE BAR CHART
-      // =========================
+      // ================= OFFICE =================
       this.charts.office = new Chart(document.getElementById("officeChart"), {
         type: "bar",
         data: {
@@ -209,20 +209,12 @@ export default {
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } },
         },
       });
 
-      // =========================
-      // 🥧 OWNERSHIP PIE CHART
-      // =========================
+      // ================= OWNERSHIP =================
       this.charts.ownership = new Chart(
         document.getElementById("ownershipChart"),
         {
@@ -242,11 +234,8 @@ export default {
           },
         },
       );
-      console.log("ownershipChart raw:", this.dashboard.ownershipChart);
 
-      // =========================
-      // 🍩 LOCATION DOUGHNUT
-      // =========================
+      // ================= LOCATION =================
       this.charts.location = new Chart(
         document.getElementById("locationChart"),
         {

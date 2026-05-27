@@ -22,65 +22,41 @@
             @click="handleClose"
             aria-label="Close"></button>
         </div>
-
-        <!-- Modal Body -->
         <div class="modal-body p-4">
           <form @submit.prevent="SavePrinter">
             <div class="row g-4">
               <div class="col-md-6">
-                <label class="form-label premium-label">OFFICE NAMES</label>
+                <label class="form-label premium-label">LOCATIONS</label>
                 <div class="dropdown">
-                  <!-- Dropdown Trigger Button -->
                   <button
                     class="form-control premium-input dropdown-toggle d-flex justify-content-between align-items-center"
                     type="button"
                     id="printerDropdown"
                     data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <!-- Displays the selected item, or the placeholder if nothing is selected -->
-                    {{ AddPrinter.fkLocationID || "e.g. MISO" }}
+                    {{
+                      getLocations.find(
+                        (l) => l.locationID === AddPrinter.fkLocationID,
+                      )?.locationName || "e.g. MISO"
+                    }}
                   </button>
-
-                  <!-- Dropdown Menu Options -->
                   <ul
                     class="dropdown-menu w-100"
                     aria-labelledby="printerDropdown">
-                    <li>
+                    <li
+                      v-for="location in getLocations"
+                      :key="location.locationID">
                       <a
                         class="dropdown-item"
                         href="#"
-                        @click.prevent="AddPrinter.fkLocationID = 1"
-                        >Electronics</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        @click.prevent="AddPrinter.fkLocationID = 2"
-                        >Laser</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        @click.prevent="AddPrinter.fkLocationID = 3"
-                        >Inkjet</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        @click.prevent="AddPrinter.fkLocationID = 4"
-                        >3D Printer</a
+                        @click.prevent="
+                          AddPrinter.fkLocationID = location.locationID
+                        "
+                        >{{ location.locationName }}</a
                       >
                     </li>
                   </ul>
                 </div>
-
-                <!-- Hidden input to maintain HTML5 'required' validation if needed inside a native form -->
                 <input type="hidden" v-model="AddPrinter.type" required />
               </div>
               <div class="col-md-6">
@@ -245,12 +221,17 @@ export default {
         supplier: "",
         remarks: "",
       },
+      location: "",
+      getLocations: [],
       ShowToast: false,
       Message: "",
       Loading: false,
     };
   },
   emits: ["close"],
+  mounted() {
+    this.fetchLocations();
+  },
   methods: {
     handleClose() {
       this.$emit("close");
@@ -258,6 +239,18 @@ export default {
     handleToastClose() {
       this.ShowToast = false;
     },
+    async fetchLocations() {
+      const response = await axios.get(
+        "https://localhost:5001/api/Printer/getLocations",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        },
+      );
+      this.getLocations = response.data;
+    },
+
     async SavePrinter() {
       try {
         this.Loading = true;
