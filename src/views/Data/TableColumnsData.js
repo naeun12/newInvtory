@@ -108,5 +108,36 @@ export default {
           "py-3 text-uppercase x-small fw-bold text-secondary text-end pe-4",
       },
     ],
+    IssuancesTableColumnsData: [
+      {
+        label: "Item Info", // Shows Item Name, UOM, and RsNo
+        class: "ps-4 py-3 text-uppercase x-small fw-bold text-secondary",
+      },
+      {
+        label: "Location", // Shows the associated Location name
+        class: "py-3 text-uppercase x-small fw-bold text-secondary",
+      },
+      {
+        label: "Qty", // Quantity issued
+        class: "py-3 text-uppercase x-small fw-bold text-secondary text-end",
+      },
+      {
+        label: "Involved Parties", // Combines Requested By, Issued To, Issued From
+        class: "py-3 text-uppercase x-small fw-bold text-secondary",
+      },
+      {
+        label: "Timeline", // Shows Issued From Date / Issued To Date
+        class: "py-3 text-uppercase x-small fw-bold text-secondary",
+      },
+      {
+        label: "Status", // Shows "Active", etc.
+        class: "py-3 text-uppercase x-small fw-bold text-secondary text-center",
+      },
+      {
+        label: "Actions", // For View/Edit/Delete buttons
+        class:
+          "pe-4 py-3 text-uppercase x-small fw-bold text-secondary text-end",
+      },
+    ],
   },
 };
